@@ -57,8 +57,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (email: string, password: string): Promise<void> => {
     try {
       setLoading(true);
-      const { user: userData, token } = await authService.login(email, password);
-      
+      const { user: userData, token } = await authService.login({ email, password });
+
       // Salvar token e dados do usuário
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(userData));
