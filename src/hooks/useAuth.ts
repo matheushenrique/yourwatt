@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
 export const useAuth = () => {
@@ -8,5 +8,13 @@ export const useAuth = () => {
     throw new Error('useAuth deve ser usado dentro de um AuthProvider');
   }
 
-  return context;
+  // Adiciona propriedade computada isAdmin
+  const isAdmin = useMemo(() => {
+    return context.user?.role === 'admin';
+  }, [context.user]);
+
+  return {
+    ...context,
+    isAdmin,
+  };
 };

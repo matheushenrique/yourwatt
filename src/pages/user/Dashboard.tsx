@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { Download, TrendingDown, Zap, DollarSign } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import api from '../../services/api';
-import { ConsumptionData, BillingInfo } from '../../types/user.types';
+import { BillingInfo } from '../../types/user.types';
+import { ConsumptionData } from '../../types/consumption.types';
 
 export default function Dashboard() {
   const { user } = useAuth();
